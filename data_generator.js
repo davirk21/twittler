@@ -1,3 +1,6 @@
+//Check the random tweet with time 
+//########################################
+
 /*
  * NOTE: This file generates fake tweet data, and is not intended to be part of your implementation.
  * You can safely leave this file untouched, and confine your changes to index.html.
@@ -16,6 +19,7 @@ window.users = Object.keys(streams.users);
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
   var username = newTweet.user;
+  console.log("===>"+ streams.home.length + "[ "+ newTweet.user +" ]" );     
   streams.users[username].push(newTweet);
   streams.home.push(newTweet);
 };
@@ -50,15 +54,10 @@ for(var i = 0; i < 10; i++){
   generateRandomTweet();
 }
 
-var scheduleNextTweet = function(){
-  generateRandomTweet();
-  setTimeout(scheduleNextTweet, Math.random() * 1500);
-};
-scheduleNextTweet();
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
-var writeTweet = function(message){
+var writeTweet = function(message,visitor){
   if(!visitor){
     throw new Error('set the global visitor property!');
   }
@@ -67,3 +66,16 @@ var writeTweet = function(message){
   tweet.message = message;
   addTweet(tweet);
 };
+
+
+
+ // time stamp problem need to rectify
+ 
+var scheduleNextTweet = function(){
+    displayTweet(); //TWEET FOR SEQUENCE
+    
+    generateRandomTweet();
+ 
+  setTimeout(scheduleNextTweet, Math.random() * 5000);
+};
+//scheduleNextTweet();

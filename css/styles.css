@@ -1,34 +1,146 @@
+body{
+width: 100%;
+
+background: #D1F8FD  ; /* For browsers that do not support gradients */
+background: -webkit-linear-gradient(#D1F8FD  , #EBF5FB); /* For Safari 5.1 to 6.0 */
+background: -o-linear-gradient(#D1F8FD  , #EBF5FB); /* For Opera 11.1 to 12.0 */
+background: -moz-linear-gradient(#D1F8FD  , #EBF5FB); /* For Firefox 3.6 to 15 */
+background: linear-gradient(#D1F8FD  , #EBF5FB); /* Standard syntax */
+}
 
 div.main {
-	width : 100%;
-	border : 4px solid blue;
-	height: auto;
-
+width : 70%;
+border : 2px solid black;
+/*	height: auto;*/
+margin-left:auto;
+margin-right:auto;
 }
 
 div.left {
-	float :left;
-	width: 20% ;
-	padding: 10px;
-	border: 2px solid black;
-	height: 300px;
+float :left;
+width: 20% ;
+padding: 10px;
+border: 2px solid black;
+height: 300px;
+margin-left: 10px;
+position: relative;
+
+}
+
+div.left-constant-block {
+display: inline-block;
+width: 100%;
+color: black;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 25px;
+border-bottom: 3px solid #4588ba;
+margin: 0;
+padding:0;
+position: relative;
+}
+
+.left-random-block {
+display: inline-block;
+width: 100%;
+color: dodgerblue;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 18px;
+padding :10px;
+
+}
+
+.left-random-link {
+display: inline-block;
+width: 100%;
+color: dodgerblue;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px;
+padding :0px;
+position: absolute; 
+bottom: 0;
+}
+
+.left-random-link:hover{
+color:cornflowerblue;
+text-decoration: underline;  
+cursor: pointer;
+
+}
+
+
+div.left-bottom {
+	float: bottom;
 }
 
 div.right {
-	float : left;
-	width: 55% ;
-	padding: 10px;
-	border: 2px solid black;
-	height: auto;
+float : left;
+width: 70% ;
+padding: 10px;
+border: 2px solid black;
+height: auto;
+margin-left: 10px;
+
 }
 
 .tweet {
-	background: white;
-	border: 1px solid lightblue;
-	width: 100%;
-	height: 50px;
+background: #CEEAEE  ;
+border: 1px solid lightblue;
+width: 100%;
+height: 50px;
+position:relative;
 }
 
+.user_text{
+color:brown;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15px; 
+float:left;
+}
+.user_text:hover{
+color:cornflowerblue;
+text-decoration: underline;  
+cursor: pointer;
+}
 
+.tweet_time{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 12px;
+float:right;
+}
+.tweet_msg{
+font-family: Arial, Helvetica, sans-serif;
+font-size: 15x;
 
+position:absolute;
+bottom: 0;
+}
 
+header {
+color: white;
+background-color:   #A8F2FC;
+clear: left;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 80px;
+letter-spacing: 5px;
+text-shadow: 5px 5px 3px black; /*vertical horizontal blur color */
+
+padding-left: 30px;
+font-weight: bold;
+padding-top: 1px;
+padding-bottom: 1px;
+padding-right: 20px;
+
+line-height: 2%;
+}
+
+footer {
+padding: 1em;
+color: white;
+background-color: #A8F2FC;
+clear: left;
+text-align: center;
+font-family: Arial, Helvetica, sans-serif;
+font-size: 1em;
+letter-spacing: 3px;
+}
