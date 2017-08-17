@@ -57,13 +57,14 @@ for(var i = 0; i < 10; i++){
 
 // utility function for letting students add "write a tweet" functionality
 // (note: not used by the rest of this file.)
-var writeTweet = function(message,visitor){
+var writeTweet = function(message){
   if(!visitor){
     throw new Error('set the global visitor property!');
   }
   var tweet = {};
   tweet.user = visitor;
   tweet.message = message;
+  tweet.created_at = new Date();    
   addTweet(tweet);
 };
 
@@ -72,10 +73,10 @@ var writeTweet = function(message,visitor){
  // time stamp problem need to rectify
  
 var scheduleNextTweet = function(){
-    displayTweet(); //TWEET FOR SEQUENCE
     
+      
     generateRandomTweet();
- 
-  setTimeout(scheduleNextTweet, Math.random() * 5000);
+    setTimeout(scheduleNextTweet, Math.random() * 5000);
+    displayTweet(); //TWEET FOR SEQUENCE
 };
 //scheduleNextTweet();

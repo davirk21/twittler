@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!--    <script src="jquery.js"></script>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="jquery.js"></script>
+
 <script src="data_generator.js"></script>
 <link rel="stylesheet" type = "text/css" href="css/styles.css">
 
@@ -57,7 +57,6 @@ douglascalhoun:3
 
 // function to display the dynamic div part 
 function generateDynamicTweetDiv(userData){
-
     var $body = $(".right");
     $body.html(''); //clear the html page
     var index = 0 ;
@@ -66,12 +65,10 @@ function generateDynamicTweetDiv(userData){
         var $userText = $("<div></div>").html('@' + tweet.user);     
         var $tweetTime =$("<div></div>").html(tweetCurrentTime(tweet.created_at));
         var $tweetMsg = $("<div></div>").html(tweet.message);    
-
         // setting the css property dynamically    
         $userText.addClass("user_text");
         $tweetTime.addClass("tweet_time");
         $tweetMsg.addClass("tweet_msg");
-
         var $tweet = $('<div></div>'); // Block div to insert tweet    
         $tweet.addClass("tweet"); // used for css     
 
@@ -83,26 +80,11 @@ function generateDynamicTweetDiv(userData){
         index += 1;
     }//while ends 
 }    
-
-$(document).on('click','.user_text',function(e){
-// show up the entire div       
-$(".left-random-link").show(); // to show the link
-
-// setting the user id 
-userIdValue = getUserId($(e.target).text());
-// console.log("==>>"+ userIdValue +" clciked " + $(e.target).text() );
-
-
-var $bodyLeft = $(".left-random-block");
-$bodyLeft.html(" Timeline Of : <br /><br />" + $(e.target).text() );
-displayTweet(); // calling the display function to update the  html content
-});
-
     
 //function to display tweet 
 var displayTweet = function(){
     if( userIdValue === userEnum.shawndrost )
-        generateDynamicTweetDiv(streams.users.shawndrost);   
+        generateDynamicTweetDiv(streams.users.shawndrost);
     else if( userIdValue === userEnum.sharksforcheap )
         generateDynamicTweetDiv(streams.users.sharksforcheap);
     else if( userIdValue === userEnum.mracus )
@@ -112,27 +94,68 @@ var displayTweet = function(){
     else
         generateDynamicTweetDiv(streams.home);
 } 
+
+var getUserName = function(){
+    if( userIdValue === userEnum.shawndrost )
+        return "shawndrost";
+    else if( userIdValue === userEnum.sharksforcheap )
+       return "sharksforcheap";
+    else if( userIdValue === userEnum.mracus )
+       return "mracus";
+    else if( userIdValue === userEnum.douglascalhoun )
+        return "douglascalhoun";
+    else   
+        return "annoymous";
+}
+
+$(document).on('click','.user_text',function(e){
+  // show up the entire div       
+  $(".left-random-link").show(); // to show the link
+
+  $("#tweet").show();// to show hide 
+  $("#write-tweet").show();// to show hide    
+      
+  // setting the user id 
+  userIdValue = getUserId($(e.target).text());
+  console.log("==>>"+ userIdValue +" clciked " + $(e.target).text() );
+
+  var $bodyLeft = $(".left-random-block");
+  $bodyLeft.html(" Timeline Of : <br /><br />" + $(e.target).text() );
+  displayTweet(); // calling the display function to update the html content
+});  
+
+
+
 // click function to reset the content to all user data    
 $(document).on('click', '.left-random-link', function () {
      userIdValue = -1;
     $(".left-random-block").text("Entire Live Feed");
+    $(".left-random-link").hide();// to show hide
+    
+    $("#tweet").hide();// to show hide 
+    $("#write-tweet").hide();// to show hide
     displayTweet();
  
-});
+});    
 
-$("button:#write-tweet").on(click, function(){
-
-  writeTweet().html
-
-})
+$(document).on('click','#write-tweet', function (){
+    visitor = getUserName();
+    writeTweet($('#tweet').val());
+   displayTweet(); // calling the display function to update the html content
     
-
+    $('#tweet').val('');
+    
+});    
+    
 //function that do main functionality (MAIN ENTRY POINT / FUNCTION CALL STARTS HERE)    
 $(document).ready(function(){
-$(".left-random-link").hide();// to show hide 
-//display the tweet  
-displayTweet();
-scheduleNextTweet();
+  $(".left-random-link").hide();// to show hide 
+      
+  $("#tweet").hide();// to show hide 
+  $("#write-tweet").hide();// to show hide     
+  //display the tweet only once
+  displayTweet();
+  scheduleNextTweet();
 });
 
 </script>
@@ -143,26 +166,19 @@ scheduleNextTweet();
 <p> Twittler </p> 
 </header>
 <div class = "content">
-<div class = "left" > 
+    <div class = "left" > 
     <div class = "left-constant-block">Now Viewing</div>
     <div class = "left-random-block">Entire Live Feed</div>
-    <div class = "left-random-link"> Back to Entire Twitter Feed </div> 
-    <div class = "left-bottom">
-</div>
-
-<div class = "left-bottom">
-     <div>
-        <input type="textbox" value="Type something"></input>
-      </div>
-      <button id = "write-tweet">Send Tweet</button>
+    <div class = "left-random-link"> Back to Entire Twitter Feed </div>   
+    
+    <textarea id="tweet" rows="10" cols="24" name="comment"> </textarea>
+    <button id = "write-tweet" type="submit"  >Tweet </button>
+    
     </div>
+    
+    <div class = "right" ></div>
+   
 </div>
-
-
-<div class = "right" ></div>
-
-</div>
-<br></br>
 <footer>
 <h4> end </h4>
 </footer>

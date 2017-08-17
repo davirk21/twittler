@@ -21,7 +21,7 @@ float :left;
 width: 20% ;
 padding: 10px;
 border: 2px solid black;
-height: 300px;
+height: 420px;
 margin-left: 10px;
 position: relative;
 
@@ -64,23 +64,33 @@ bottom: 0;
 color:cornflowerblue;
 text-decoration: underline;  
 cursor: pointer;
-
 }
 
+.left-bottom {
+float :left;
+width: 20% ;
+padding: 10px;
+border: 2px solid black;
+height: 200px;
+margin-left: 10px;
+position: relative;
+}
 
-div.left-bottom {
-	float: bottom;
+button.write-tweet{
+display: block;
+width:100%;
+
 }
 
 div.right {
 float : left;
-width: 70% ;
+width: 50% ;
 padding: 10px;
 border: 2px solid black;
 height: auto;
 margin-left: 10px;
-
 }
+
 
 .tweet {
 background: #CEEAEE  ;
@@ -109,7 +119,7 @@ float:right;
 }
 .tweet_msg{
 font-family: Arial, Helvetica, sans-serif;
-font-size: 15x;
+font-size: 15px;
 
 position:absolute;
 bottom: 0;
